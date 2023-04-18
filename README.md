@@ -1,3 +1,65 @@
+<h1>Notes  :</h1>
+<p>Marlin firmware based on <a href="https://github.com/MrMagounet">MrMagounet</a>'s work on the Sindwinder X2 and adapted for the Genius Pro with TouchMi : <a href="https://www.lesimprimantes3d.fr/forum/topic/44697-tuto-comment-flasher-le-firmware-des-x2-genius-pro-hornet/">[Tuto] Comment Flasher le Firmware des X2 / Genius Pro / Hornet</a></p>
+<p>TouchMi tutorial : <a href="https://www.lesimprimantes3d.fr/forum/topic/47331-tuto-installation-touchmi-sur-x2-et-genius-pro/">[Tuto] installation TouchMi sur X2 et Genius Pro</a></p>
+<h2>List of optimizations and additions by MrMagounet to the Marlin 2.1.2 firmware compared to the original Artillery one.</h2>
+<ul><li>
+		Upgrade to Marlin 2.1.2 (After the upgrade the DFU mode should be able to be activated without opening the printer, if you had an X2 that required it)
+	</li>
+	<li>
+		Support of the M593 Input Shapping function for the X and Y axis, this function allows to calibrate the resonance and to suppress the ghosting effect on the prints, procedure available, <a href="https://www.lesimprimantes3d.fr/forum/topic/51713-calibration-input-shaping-avec-marlin-212/" rel="">procedure available here</a>.
+	</li>
+	<li>
+		Baud rate for Flash in DFU mode changed to 250,000 instead of 115,200 (to keep some logic between non DFU and DFU mode).
+	</li>
+	<li>
+		Adjustments to the values for safety and prevention of thermal incidents.
+	</li>
+	<li>
+		Adjustments to the feedrates (X / Y / Z / E) of the X2.
+	</li>
+	<li>
+		Adjustments to the accelerations (mainly the retraction acceleration which was excessive).
+	</li>
+	<li>
+		Replacement of the "Junction Deviation" & "S-Curve" functions by the "Classic Jerk" (Junction Deviation and S-Curve are still capricious under Marlin for the moment).
+	</li>
+	<li>
+		Feedrate adjustment of the Z-Prob for more efficient 3DTouch measurement (Probing Fans Off).
+	</li>
+	<li>
+		Activation of the M48 function (Repeatability test of the automatic levelling sensor).
+	</li>
+	<li>
+		Activation of the "Restore Leveling After G28" function (as soon as a G28 is performed the values of the last reading are automatically reloaded), no more need for G29 or M420 S1 after the G28 in the Gcode start .
+	</li>
+	<li>
+		Activation of the G26 Mesh Validation function.
+	</li>
+	<li>
+		ABL Measurement survey in 49 points instead of 25 points (this is just a personal opinion but it brings more precision on the survey and therefore on the first layer).
+	</li>
+	<li>
+		Activation of the "Nozzle Park Feature" and "Advanced Pause Feature" (M600 support and automatic parking of the head in pause).
+	</li>
+	<li>
+		Activation of the "Adaptive Step Smoothing" function (increased resolution of multi-axis movements, especially at certain motor operating frequencies).
+	</li>
+	<li>
+		BabyStepping is taken into account all the time and not only during the movement.
+	</li>
+	<li>
+		Activation of the "Linear Advance" with a "K to 0" value (which allows you to leave it inactive at 0 or to perform a Linear Advance calibration test and adjust its value), the Linear Advance allows you to keep a constant flow of material out of the nozzle during acceleration and deceleration. <a href="https://www.youtube.com/watch?v=n3yK0lJ8TWM" rel="external nofollow">Video explanation of the Linear Advance </a> &amp; <a href="https://marlinfw.org/tools/lin_advance/k-factor.html" rel="external nofollow">Tools for generating the calibration Gcode for Linear Advance</a>.
+	</li>
+	<li>
+		Adjusting the ARC Welder function with a much higher resolution (<a href="https://www.youtube.com/watch?v=3VTUxZ4Fifo&amp;t=1s" rel="external nofollow">Tom's basement video on the Arc Welder topic</a>).
+	</li>
+	<li>
+		Activation of the M486 function for PrusaSlicer & SuperSlicer users (object cancellation)
+	</li>
+</ul>
+
+<h1></h1>
+
 <p align="center"><img src="buildroot/share/pixmaps/logo/marlin-outrun-nf-500.png" height="250" alt="MarlinFirmware's logo" /></p>
 
 <h1 align="center">Marlin 3D Printer Firmware</h1>
